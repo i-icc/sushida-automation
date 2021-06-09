@@ -5,7 +5,6 @@ from time import sleep
 from selenium import webdriver
 import pyocr
 import pyocr.builders
-import cv2
 from PIL import Image
 import sys
 
@@ -27,7 +26,7 @@ driver.set_window_size(*window)
 target_url = 'http://typingx0.net/sushida/play.html'
 driver.get(target_url)
 
-sleep(10)
+sleep(8)
 x,y=pyautogui.locateCenterOnScreen("title.png")
 x //= 2
 y //= 2
@@ -36,7 +35,7 @@ sleep(2)
 pyautogui.click(x,y+100)
 pyautogui.typewrite(" ")
 sleep(2)
-for i in range(200):
+for i in range(300):
     i += 1
     sc=pyautogui.screenshot(region=(800, 1000, 430, 60))
     sc.save("moji.png")
