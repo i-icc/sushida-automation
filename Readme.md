@@ -4,6 +4,8 @@
 ## Setup
 1. Clone this repository.
 1. Go to the repository where you downloaded the repository.
+1. Download the drivers for your version of Chrome and place them in this repository.
+    - https://chromedriver.chromium.org/downloads
 1. Download the libraries you need.
     - `pip install opencv-python`
     - `pip install pyautogui`
