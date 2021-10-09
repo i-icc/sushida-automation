@@ -3,12 +3,10 @@
 """
 import cv2
 import pyautogui
+import pyocr
 from time import sleep
 from selenium import webdriver
-import pyocr
-import pyocr.builders
 from PIL import Image
-import sys
 import numpy as np
 
 
@@ -17,7 +15,7 @@ def main():
     tools = pyocr.get_available_tools()
     if len(tools) == 0:
         print("no file")
-        sys.exit(1)
+        return
     tool = tools[0]
 
     # 寿司打サイトのurlを指定して開く
@@ -54,14 +52,11 @@ def main():
     res = "-1"
     while res != "":
         sc = pyautogui.screenshot(region=region)
-        #sc.save("moji.png")
-        #moji = cv2.imread("moji.png", 0)
         moji = np.array(sc) 
         ret, out = cv2.threshold(moji, 100, 255, cv2.THRESH_BINARY)
         out = cv2.bitwise_not(out)
-        cv2.imwrite("gray.png", out)
-        res = tool.image_to_string(Image.open(
-            "gray.png"), lang="eng", builder=pyocr.builders.TextBuilder())
+        res = tool.image_to_string(Image.fromarray(
+            out), lang="eng", builder=pyocr.builders.TextBuilder())
         pyautogui.typewrite(res)
 
     input("エンターを押せば終了します")
