@@ -1,0 +1,14 @@
+{
+  "manifest_version": 2,
+  "name": "sushida_auto_mation",
+  "description" : "sushida automainton",
+  "version": "1.0.0",
+
+  "content_scripts": [
+    {
+      "matches": ["*://typingx0.net/sushida/play.html"],
+      "js": ["src/index.js"]
+    }
+  ]
+}
+
