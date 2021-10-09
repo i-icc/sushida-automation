@@ -1,0 +1,8 @@
+version: '3'
+services:
+  python3:
+    build: .
+    container_name: 'sushida_automation'
+    working_dir: '/src'
+    volumes:
+      - ./opt:/src/opt
